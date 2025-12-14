@@ -17,7 +17,7 @@ products.forEach((product) => {
             <img class="product-rating-stars"
               src="images/ratings/rating-${product.rating.stars * 10}.png">
             <div class="product-rating-count link-primary">
-              ${product.rating.scores}
+              ${product.rating.count}
             </div>
           </div>
 
@@ -47,7 +47,7 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary js-add-to-cart">
+          <button class="add-to-cart-button button-primary js-add-to-cart  data-product-id="${product.id}">
             Add to Cart
           </button>
         </div>
@@ -59,8 +59,28 @@ document.querySelector('.js-products-grid').innerHTML =  productsHTML;
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
       button.addEventListener('click', () => {
-        console.log('Added product');
+      const productId = button.dataset.productId;
+
+      let matchingItem;
+
+      cart.forEach((item) => {
+        if(productName === item.productId){
+          matchingItem = item;
+        }
       });
+
+      if (matchingItem) {
+        matchingItem.quantity += 1;
+      } else {
+         cart.push({
+        productId: productId,
+          quantity:1
+        });
+      }
+     
+
+      console.log(cart);
+    });
   });
 
 
