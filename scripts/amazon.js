@@ -47,7 +47,7 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary js-add-to-cart  data-product-id="${product.id}">
+          <button class="add-to-cart-button button-primary js-add-to-cart"  data-product-id="${product.id}">
             Add to Cart
           </button>
         </div>
@@ -64,7 +64,7 @@ document.querySelectorAll('.js-add-to-cart')
       let matchingItem;
 
       cart.forEach((item) => {
-        if(productName === item.productId){
+        if(productId === item.productId){
           matchingItem = item;
         }
       });
@@ -80,13 +80,13 @@ document.querySelectorAll('.js-add-to-cart')
 
       let cartQuantity = 0;
 
-      cart.forEach((item) => ){
+      cart.forEach((item) => {
         cartQuantity += item.quantity;
-      }
+      });
 
       document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-     
-      console.log(cart);
+
+      
     });
   });
 
